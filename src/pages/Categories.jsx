@@ -2,7 +2,7 @@ import React from 'react'
 import ProductCard from '../components/ProductCard'
 const Categories = () => {
   return (
-    <div><ProductCard/></div>
+    <div className="bg-color"><ProductCard/></div>
   )
 }
 
