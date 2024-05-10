@@ -8,7 +8,10 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
-const Selection = ({ categories }) => {
+const Selection = ({ categories, selectedCategory,setSelectedCategory }) => {
+  const handleSelect = (category) => {
+    setSelectedCategory(category);
+  };
   return (
     <Box m={5}>
       <Menu>
@@ -18,7 +21,7 @@ const Selection = ({ categories }) => {
           as={Button}
           rightIcon={<FaChevronDown />}
         >
-          Categories
+          {selectedCategory ?? "Categories"}
         </MenuButton>
         <MenuList
         sx={{
@@ -28,7 +31,7 @@ const Selection = ({ categories }) => {
             padding:3
           }}>
           {categories.map((item) => (
-            <MenuItem>{item}</MenuItem>
+            <MenuItem key={item} onClick={() => handleSelect(item)}>{item}</MenuItem>
           ))}
         </MenuList>
       </Menu>
