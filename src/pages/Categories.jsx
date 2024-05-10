@@ -9,11 +9,14 @@ import Skeleton from "../components/Skeleton";
 
 const Categories = () => {
   const [categories, setCategories] = useState(null);
+  const [CategoryData, setCategoryData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchListOfCategories = async () => {
       try {
         const response = await axios.get(
           "https://dummyjson.com/products/categories"
@@ -27,12 +30,32 @@ const Categories = () => {
       }
     };
 
-    fetchData();
+    fetchListOfCategories();
   }, []); // Empty dependency array means this effect runs once after initial render
 
-  if (loading) return <div><Skeleton/></div>;
+    const fetchCategoryData = async (cat) => {
+      try {
+        const response = await axios.get(
+          `https://dummyjson.com/products/category/${cat}`
+        );
+        console.log(response.data.products);
+        setCategoryData(response.data.products);
+        
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    // console.log(CategoryData);
+  if (loading)
+    return (
+      <div>
+        <Skeleton />
+      </div>
+    );
   if (error) return <div>Error: {error.message}</div>;
-  if (!categories) return <></>;
+  // if (!categories) return <></>;
 
   return (
     <div className="bg-color categories">
@@ -40,8 +63,11 @@ const Categories = () => {
         categories={categories}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        fetchCategoryData={fetchCategoryData}
       />
-      <ProductCard />
+      {CategoryData && CategoryData.map((data) => (
+        <ProductCard data={data}/>
+      ))}
       {/* <Skeleton/> */}
     </div>
   );

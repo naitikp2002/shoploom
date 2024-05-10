@@ -8,9 +8,10 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
-const Selection = ({ categories, selectedCategory,setSelectedCategory }) => {
+const Selection = ({ categories, selectedCategory,setSelectedCategory,fetchCategoryData }) => {
   const handleSelect = (category) => {
     setSelectedCategory(category);
+    fetchCategoryData(category);
   };
   return (
     <Box m={5}>

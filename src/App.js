@@ -3,8 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./App.css";
 
-import Navbar from "./components/Navbar";
-import ProductCard from "./components/ProductCard";
+import Navbar from "./components/Navbar"; 
 import Home from "./pages/Home";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
@@ -33,10 +32,8 @@ const router = createBrowserRouter([
 ]);
 export function App() {
   return (
-    <React.StrictMode>
       <ChakraProvider>
         <RouterProvider router={router} />
       </ChakraProvider>
-    </React.StrictMode>
   );
 }
