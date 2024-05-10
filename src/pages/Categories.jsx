@@ -5,6 +5,7 @@ import Selection from "../components/Selection";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Skeleton from "../components/Skeleton";
+import { Box, Flex } from "@chakra-ui/react";
 // import { Skeleton } from "../components/Skeleton";
 
 const Categories = () => {
@@ -65,9 +66,11 @@ const Categories = () => {
         setSelectedCategory={setSelectedCategory}
         fetchCategoryData={fetchCategoryData}
       />
+      <Flex sx={{}}>
       {CategoryData && CategoryData.map((data) => (
         <ProductCard data={data}/>
       ))}
+      </Flex>
       {/* <Skeleton/> */}
     </div>
   );

@@ -11,7 +11,7 @@ const Home = () => {
           alignItems: "center",
         }}
       >
-        <ProductCard />
+        {/* <ProductCard /> */}
       </div>
     </div>
   );
