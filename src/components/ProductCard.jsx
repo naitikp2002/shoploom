@@ -36,12 +36,12 @@ const ProductCard = ({ data }) => {
               color: "white",
             }}
             fontWeight="bold"
-            fontSize="2xl"
+            fontSize="xl"
             textTransform="uppercase"
           >
             {title}
           </chakra.h1>
-          <chakra.p
+          {/* <chakra.p
             mt={1}
             fontSize="sm"
             color="gray.600"
@@ -50,7 +50,7 @@ const ProductCard = ({ data }) => {
             }}
           >
             {description}
-          </chakra.p>
+          </chakra.p> */}
         </Box>
 
         <Image
@@ -59,7 +59,7 @@ const ProductCard = ({ data }) => {
           fit="cover"
           mt={2}
           src={thumbnail}
-          alt="NIKE AIR"
+          alt="image"
         />
 
         <Flex
@@ -73,16 +73,18 @@ const ProductCard = ({ data }) => {
           <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
             ${price}
           </chakra.h1>
-          <Text
+          {/* <Text
             as="span"
-            ml={2}
+            float={"left"}
+            // ml={2}
             fontSize="sm"
             color="white"
             textDecoration="line-through"
           >
             ₹17,500
-          </Text>
+          </Text> */}
           <chakra.button
+            sx={{float: 'right'}}
             px={2}
             py={1}
             bg="white"
