@@ -5,7 +5,9 @@ import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 import { Stack, Heading, Button, Text } from "@chakra-ui/react";
 import { Box, Flex } from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 const ProductCard = ({ data }) => {
+  const navigate= useNavigate();
   const {
     id,
     title,
@@ -20,6 +22,8 @@ const ProductCard = ({ data }) => {
     <div>
       <Box
         // mx={5}
+        onClick={()=> navigate(`${data.id}`)}
+        cursor={"pointer"}
         maxW="xs"
         mx={5}
         bg="white"

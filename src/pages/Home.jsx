@@ -10,11 +10,19 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [search,setSearch]=useState("");
   const [filteredProducts,setFilteredProducts] = useState(null)
-  const handleSearch = async (e) => {
-    // e.preventDefault();
-    setFilteredProducts(Products.filter((product) =>
-      product.title.toLowerCase().includes(search.toLowerCase())
-    ))
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(
+        `https://dummyjson.com/products/search?q=${search}`
+      );
+      console.log(response.data.products);
+      setFilteredProducts(response.data.products);
+      setSearch("")
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
   }
   console.log(filteredProducts);
   useEffect(() => {
@@ -44,7 +52,7 @@ const Home = () => {
   // if (!categories) return <></>;
   return (
     <div className="bg-color" style={{padding:"20px"}}>
-      <SearchInput handleSearch={handleSearch} setSearch={setSearch}/>
+      <SearchInput search={search} handleSearch={handleSearch} setSearch={setSearch}/>
       <div
         style={{
           display: "grid",
@@ -52,10 +60,10 @@ const Home = () => {
           gridGap: "20px",
         }}
       >
-        {search.trim()!== "" && filteredProducts && filteredProducts.map((data) => (
+        { filteredProducts && filteredProducts.map((data) => (
           <ProductCard data={data} />
         ))}
-        {search.trim() === "" && Products && Products.map((data) => (
+        {!filteredProducts && Products && Products.map((data) => (
           <ProductCard data={data} />
         ))}
       </div>

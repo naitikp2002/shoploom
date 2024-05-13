@@ -6,7 +6,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Skeleton from "../components/Skeleton";
 import { Box, Flex,chakra } from "@chakra-ui/react";
-// import { Skeleton } from "../components/Skeleton";
 
 const Categories = () => {
   const [categories, setCategories] = useState(null);
@@ -69,7 +68,7 @@ const Categories = () => {
       <Flex sx={{}}>
       {!selectedCategory && <chakra.h2 fontSize={"x-large"} fontWeight={"bold"}>Select the Category!</chakra.h2>}
       {CategoryData && CategoryData.map((data) => (
-        <ProductCard data={data}/>
+        <ProductCard key={data.id} data={data}/>
       ))}
       </Flex>
       {/* <Skeleton/> */}

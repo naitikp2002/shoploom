@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 
-export const SearchInput = ({handleSearch,setSearch}) => {
+export const SearchInput = ({handleSearch,setSearch,search}) => {
     const handleChange = (e) => {
         setSearch(e.target.value);
       }
@@ -26,7 +26,7 @@ export const SearchInput = ({handleSearch,setSearch}) => {
           pointerEvents="none"
           children={<Search2Icon color="gray.600" />}
         />
-        <Input type="text" placeholder="Search..." border="1px solid #949494" onChange={handleChange} />
+        <Input value={search} type="text" placeholder="Search..." border="1px solid #949494" onChange={handleChange} />
         <InputRightAddon p={0} border="none">
           <Button
             size="sm"
