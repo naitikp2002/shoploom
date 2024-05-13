@@ -5,7 +5,7 @@ import Selection from "../components/Selection";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Skeleton from "../components/Skeleton";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex,chakra } from "@chakra-ui/react";
 // import { Skeleton } from "../components/Skeleton";
 
 const Categories = () => {
@@ -56,7 +56,7 @@ const Categories = () => {
       </div>
     );
   if (error) return <div>Error: {error.message}</div>;
-  // if (!categories) return <></>;
+  // if (!selectedCategory) return <>Hello</>;
 
   return (
     <div className="bg-color categories">
@@ -67,6 +67,7 @@ const Categories = () => {
         fetchCategoryData={fetchCategoryData}
       />
       <Flex sx={{}}>
+      {!selectedCategory && <chakra.h2 fontSize={"x-large"} fontWeight={"bold"}>Select the Category!</chakra.h2>}
       {CategoryData && CategoryData.map((data) => (
         <ProductCard data={data}/>
       ))}
