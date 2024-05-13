@@ -1,22 +1,16 @@
 import { Image } from "@chakra-ui/react";
 import React from "react";
 // import Image from '@chakra-ui';
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
-import { Stack, Heading, Button, Text } from "@chakra-ui/react";
+
 import { Box, Flex } from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 const ProductCard = ({ data }) => {
   const navigate= useNavigate();
   const {
-    id,
     title,
-    description,
     price,
-    discountPercentage,
-    rating,
-    thumbnail,
-    images,
+    thumbnail
   } = data;
   return (
     <div>

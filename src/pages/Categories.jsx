@@ -5,7 +5,7 @@ import Selection from "../components/Selection";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Skeleton from "../components/Skeleton";
-import { Box, Flex,chakra } from "@chakra-ui/react";
+import { Flex,chakra } from "@chakra-ui/react";
 
 const Categories = () => {
   const [categories, setCategories] = useState(null);

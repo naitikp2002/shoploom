@@ -28,10 +28,13 @@ const ProductDetails = () => {
     };
 
     fetchProductDetails();
-  }, [id]);
+  });
 
   if (loading) {
     return <Skeleton />;
+  }
+  if(error){
+    return <h1>{error.message}</h1>
   }
   return (
     <Flex className="bg-color" padding={"20px"}>
